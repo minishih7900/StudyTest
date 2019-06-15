@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "Tool";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Tool</h2>
+<div class="col-lg-12">
+    <a href="@Url.Action("QueryNumber", "Home")" class="btn btn-warning btn-table"><span>查詢號碼</span></a>
+    <a href="@Url.Action("AddNumber", "Home")" class="btn btn-warning btn-table"><span>新增號碼</span></a>
+    <a href="@Url.Action("TestCode", "Home")" class="btn btn-warning btn-table"><span>測試Code</span></a>
+    <a href="@Url.Action("DatepicerTest", "Home")" class="btn btn-warning btn-table"><span> datepicer練習</span></a>
+    <a href="@Url.Action("ranNumber", "Home")" class="btn btn-warning btn-table"><span>隨機碼</span></a>
+    <button class="btn btn-warning btn-table" id="rntBnt">隨機碼輸入</button>
+    <input id="rntInt" type="text" />
+</div>
+<div class="col-lg-12">
+    <br /><br />
+    <input type="range" name="points" min="1" max="10" id="range" />
+    <br />
+    <label id="textView"></label>
+    <br />
+</div>
+@*<div>
+    <div id="div1">
+        <p>TEST1</p>
+        <p>TEST11</p>
+        <p>TEST12</p>
+        <span>
+            <label>1234</label>
+        </span>
+    </div>
+    <p>自己1</p>
+    <p>自己2</p>
+    <div id="div2">
+        <p>TEST2</p>
+        <p>TEST21</p>
+        <p>TEST22</p>
+        <span>
+            <label>5678</label>
+        </span>
+    </div>
+</div>*@
+
+@section scripts{
+    <script>
+        
+        document.getElementById("range").onchange= function() {
+            document.getElementById("textView").innerText= document.getElementById("range").value
+            
+        };
+
+    </script>
+
+
+@if (TempData["message"] != null)
+{
+    <script type="text/javascript">
+        var message = @Html.Raw(Json.Encode(TempData["message"]));
+        alert(message);
+    </script>
+}    
+    <script>
+        $(function () {
+            $("#div1 ~ p").css('background-color', 'red');
+        })
+    </script>
+
+    <script>
+        $('#rntBnt').click(function() {
+         $.ajax({
+               type :"POST",
+               url  : '@Url.Action("ranNumber", "Home")',
+               data : "inputNumer = "+ $("#rntInt").val(),
+               dataType: "text",
+               success : function(data) {
+                   document.getElementById("textView").innerText=data;
+                    }
+                })
+    });
+    </script>
+
+}

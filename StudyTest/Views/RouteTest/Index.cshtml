@@ -1,0 +1,30 @@
+﻿
+@model List<Study.Models.RouteTest.TempProducts>
+
+@{
+    ViewBag.Title = "Index";
+
+    //IList<WebApplication1.Models.CarData> cars = new List<WebApplication1.Models.CarData>();
+    //cars.Add(new WebApplication1.Models.CarData { Id = "1", name = "公車", Love = "good" });
+    //cars.Add(new WebApplication1.Models.CarData { Id = "2", name = "小巴", Love = "bad" });
+    //cars.Add(new WebApplication1.Models.CarData { Id = "3", name = "計程車", Love = "no" });
+
+}
+
+<h2>車輛種類</h2>
+<table class="table">
+    <thead><tr><td>車種ID</td><td>車種名稱</td><td>車種價錢</td></tr></thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.id</td>
+            <td>@item.name</td>
+            <td>@item.price</td>
+        </tr>
+        }
+    </tbody>
+</table>
+<a href="@Url.Action("UploadZip", "RouteTest")" class="btn btn-warning btn-table"><span>上傳檔案並解壓縮</span></a>
+
+

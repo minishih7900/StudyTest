@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "DatepicerTest2";
+}
+
+@section css{
+<link href="~/Content/bootstrap-datepicker/datepicker2/daterangepicker.css" rel="stylesheet" />
+
+    <style type="text/css">
+        #datetimepicker1 .input-group-addon .glyphicon-calendar {
+            right: 6px;
+        }
+
+        #datetimepicker1 {
+            display: inline-flex;
+        }
+
+            #datetimepicker1 .input-group-addon {
+                padding: 6px 20px;
+            }
+    </style>
+}
+
+<h2>DatepicerTest2</h2>
+<div class="container row">
+    <div class="FunctionKey">
+        @Html.ActionLink("Home", "Index", null, new { @class = "btn btn-primary" })
+    </div>
+    <hr />
+    <div class="form-group">
+        <div class="input-group date" id="datetimepicker1">
+            <input type="text" class="form-control" name="datefilter" />
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+<script src="~/scripts/bootstrap-datepicker/datepicker2/moment.min.js"></script>
+<script src="~/scripts/bootstrap-datepicker/datepicker2/daterangepicker.js"></script>
+
+
+    <script type="text/javascript">
+        $('input[name="datefilter"]').daterangepicker();
+
+    </script>
+}

@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<div>
+    <table class=""  style="width:20%">
+        <tr class="success">
+        </tr>
+        <tr>
+            <td>
+                <a href="@Url.Action("QueryNumber", "Lottery")" class="btn btn-warning btn-table"><span>查詢號碼</span></a>
+            </td>
+            <td>
+                <a href="@Url.Action("QueryNumberNoPage", "Lottery")" class="btn btn-warning btn-table"><span>查詢號碼不分頁</span></a>
+            </td>
+            <td>
+                <a href="@Url.Action("QuerySelectNumberCount", "Lottery")" class="btn btn-warning btn-table"><span>最合數字</span></a>
+            </td>
+            <td>
+                <a href="@Url.Action("HotNumber", "Lottery")" class="btn btn-warning btn-table"><span>熱門牌</span></a>
+            </td>
+            <td>
+                <a href="@Url.Action("AddNumber", "Lottery")" class="btn btn-warning btn-table"><span>新增號碼</span></a>
+            </td>
+            <td>
+                <a href="@Url.Action("test", "Lottery")" class="btn btn-warning btn-table"><span>test</span></a>
+            </td>
+        </tr>
+    </table>
+</div>
+

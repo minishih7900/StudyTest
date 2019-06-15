@@ -1,0 +1,75 @@
+﻿@model  IEnumerable<Study.Models.Models.LotNumber>
+    @{
+        ViewBag.Title = "QueryNumber";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>查詢號碼</h2>
+<div class="col-md-12" style="">
+    <div class="col-md-4" style="">
+        @using (Html.BeginForm("QueryNumber", "Home", FormMethod.Post, new { @role = "form", @class = "" }))
+        {
+            <div class="form-group">
+                <label for="StartDate"><b>開始日期</b></label>
+                <input type="text" class="form-control" placeholder="請輸入開始日期 格式如：20190101" name="StartDate" pattern="\d{8}" required oninput="value=value.replace(/[^\d]/g,'')">
+            </div>
+            <div class="form-group">
+                <label for="StartDate"><b>結束日期</b></label>
+                <input type="text" class="form-control" placeholder="請輸入結束日期 格式如：20190101" name="EndDate" pattern="\d{8}" required oninput="value=value.replace(/[^\d]/g,'')">
+            </div>
+            <br />
+            <button type="submit" class="signupbtn" onclick="validitymess()">查詢</button>
+            <br />
+        }
+    </div>
+    <div class="col-md-4" style="">
+        <a href="@Url.Action("QuerySelectNumberCount", "Home")" class="btn btn-warning"><span>最合數字</span></a>
+        <a href="@Url.Action("HotNumber", "Home")" class="btn btn-warning"><span>熱門牌</span></a>
+        <div></div>
+        <div></div>
+        <br />
+        <br />
+    </div>
+</div>
+<div class="col-lg-11" style="">
+    <br />
+    @ViewBag.Message
+    <br />
+</div>
+
+
+
+    
+@if (Model != null)
+{
+    <table id="numberList" class="table .table-bordered">
+        <tr>
+            <th>期數</th>
+            <th>開獎日期</th>
+            <th>號碼1</th>
+            <th>號碼2</th>
+            <th>號碼3</th>
+            <th>號碼4</th>
+            <th>號碼5</th>
+        </tr>
+        @{var name = "";}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.期數</td>
+                <td>@item.開獎日期</td>
+                <td>@item.號碼1</td>
+                <td>@item.號碼2</td>
+                <td>@item.號碼3</td>
+                <td>@item.號碼4</td>
+                <td>@item.號碼5</td>
+            </tr>
+        }
+                   
+    </table>
+}
+@section scripts{
+
+
+}
+

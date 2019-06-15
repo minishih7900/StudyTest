@@ -1,0 +1,195 @@
+﻿@model  Study.Models.Models.LotteryViewModel
+@{
+    ViewBag.Title = "QueryNumberNoPage";
+}
+
+@section css{
+    <style type="text/css">
+        .QuerySingle>.col-xs-2{
+          padding-right:0px;
+          padding-top:2px;
+        }
+        .QueryConditions{
+            background-color:#F0F0F0;
+            border-radius:10px;
+        }
+        .form-group>input[type="submit"]{
+         display:block;
+         margin-top:25px;
+        }
+        #demo::after,#demo::before{
+            padding-top:10px;
+        }
+        
+    </style>
+}
+@*collapse*@
+<h2>QueryNumberNoPage</h2>
+<div class="container row">
+    <div class="FunctionKey">
+        @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-primary" })
+        <button data-toggle="collapse" data-target="#demo" class="btn btn-primary">查詢條件</button>
+        <button id="clear" class="btn btn-primary">清除</button>
+    </div>
+    <hr />
+    <div class="QueryConditions">
+        @using (Html.BeginForm("QueryNumberNoPage", "Lottery", FormMethod.Post, new { id = "QueryNumberList" }))
+        {
+            <div class="container form-inline collapse" id="demo">
+                <div class="form-group">
+                    <label for="StartDate"><b>開始日期</b></label>
+                    <input type="text" class="form-control" placeholder="格式如：20190101" name="StartDate" pattern="\d{8}" oninput="value=value.replace(/[^\d]/g,'')">
+                </div>
+                <div class="form-group">
+                    <label for="StartDate"><b>結束日期</b></label>
+                    <input type="text" class="form-control" placeholder="格式如：20190101" name="EndDate" pattern="\d{8}" oninput="value=value.replace(/[^\d]/g,'')">
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Search" class="form-control btn btn-default" />
+                </div>
+            </div>
+        }
+    </div>
+    
+    <div class="QuerySingle form-inline row">
+        <div class="col-xs-2">
+            <input class="form-control" id="Num1" type="text">
+        </div>
+        <div class="col-xs-2">
+            <input class="form-control" id="Num2" type="text">
+        </div>
+        <div class="col-xs-2">
+            <input class="form-control" id="Num3" type="text">
+        </div>
+        <div class="col-xs-2">
+            <input class="form-control" id="Num4" type="text">
+        </div>
+        <div class="col-xs-2">
+            <input class="form-control" id="Num5" type="text">
+        </div>
+        <div class="col-xs-2">
+            <input class="form-control" id="Num6" type="text">
+        </div>
+        <div class="col-xs-2">
+            <input class="form-control" id="Num7" type="text">
+        </div>
+        <div class="col-xs-2">
+            <input class="form-control" id="Num8" type="text">
+        </div>
+        <div class="col-xs-2">
+            <input class="form-control" id="Num9" type="text">
+        </div>
+        <div class="col-xs-2">
+            <input class="form-control" id="Num10" type="text">
+        </div>
+        <div class="col-xs-2">
+            <input class="form-control" id="Num11" type="text">
+        </div>
+        <div class="col-xs-2">
+            <input class="form-control" id="Num12" type="text">
+        </div>
+    </div>
+    <br />
+    <div class="tableT2" >
+        @if (Model.LotNumberNoPage != null && Model.LotNumberNoPage.Count() > 0)
+            {
+
+            <table class="table table-hover" id="tableT2">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LotNumberNoPage.First().期數)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LotNumberNoPage.First().開獎日期)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LotNumberNoPage.First().號碼1)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LotNumberNoPage.First().號碼2)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LotNumberNoPage.First().號碼3)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LotNumberNoPage.First().號碼4)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LotNumberNoPage.First().號碼5)
+                    </th>
+                </tr>
+
+                @foreach (var item in Model.LotNumberNoPage)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.期數)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.開獎日期)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.號碼1)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.號碼2)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.號碼3)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.號碼4)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.號碼5)
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+    </div>
+</div>
+@section scripts{
+    <script>
+        $(function () {
+            $(".QuerySingle").change(function (event) {
+                //alert(event.target.id);
+                //alert(event.target.value);
+                $("input[id]").each(function () {
+                    show($(this).val());
+                });
+            });
+            $("#clear").click(function () {
+                $("input[id]").each(function () {
+                    $(this).val("");
+                    show("clear");
+                });
+            })
+        })
+
+        function show(key){
+            var TAB = document.getElementById("tableT2");
+            //表格行数
+            var ROW = TAB.rows.length ;
+            //表格列数
+            //var CELL = TAB.rows.item(0).cells.length ;
+            //alert("行数"+ROW+" ,列数"+CELL);
+            for(var i=1;i<ROW;i++){
+                // 获取每一行的第一列的值
+                for (var j = 2; j < 7; j++) {
+                    //console.log(TAB.rows[i].cells[j].innerHTML.trim());
+                    if (TAB.rows[i].cells[j].innerHTML.trim()==key) {
+                        TAB.rows[i].cells[j].style.color = "red";
+                        TAB.rows[i].cells[j].style.fontWeight="bold";
+                    }
+                    if (key=="clear") {
+                        TAB.rows[i].cells[j].style.color = "";
+                        TAB.rows[i].cells[j].style.fontWeight = "";
+                    }
+                }
+            }
+        }
+
+    </script>
+}
+

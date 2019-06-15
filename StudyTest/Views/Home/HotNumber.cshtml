@@ -1,0 +1,175 @@
+﻿@model  Study.Models.Models.SelectLotNumber
+@{
+    ViewBag.Title = "HotNumber";
+}
+
+@section css{
+    <style type="text/css">
+        .table-hover thead tr th, .table-hover tbody tr td {
+            text-align: center;
+        }
+
+        .table-hover tbody tr th {
+            background-color: aliceblue;
+            text-align: center;
+        }
+    </style>
+}
+<h2>HotNumber</h2>
+
+@using (Html.BeginForm("HotNumber", "Home", FormMethod.Post, new { @role = "form", @class = "" }))
+{
+    <div class="form-group col-lg-6">
+        <div class="col-lg-6">
+            <label for="StartDate"><b>開始日期</b></label>
+            <input type="text" class="form-control" placeholder="格式如：20190101" name="StartDate" maxlength="8" oninput="value=value.replace(/[^\d]/g,'')" autocomplete="off">
+            <label for="StartDate"><b>結束日期</b></label>
+            <input type="text" class="form-control" placeholder="格式如：20190101" name="EndDate" maxlength="8" oninput="value=value.replace(/[^\d]/g,'')" autocomplete="off">
+        </div>
+        <div class="col-lg-6">
+            <label for="StartDate"><b>開始期數</b></label>
+            <input type="text" class="form-control" placeholder="請輸入開始期數 格式如：1" name="StartPeriod" oninput="value=value.replace(/[^\d]/g,'')" autocomplete="off">
+            <label for="StartDate"><b>結束期數</b></label>
+            <input type="text" class="form-control" placeholder="請輸入結束期數 格式如：1" name="EndPeriod" oninput="value=value.replace(/[^\d]/g,'')" autocomplete="off">
+        </div>
+    </div>
+    <div class="form-group  col-lg-6">
+        <div class="col-lg-6">
+            <label for="StartDate"><b>開始到結束期數</b></label>
+            <input type="text" class="form-control" readonly value="@ViewBag.Data">
+            <br />
+            @ViewBag.Message
+        </div>
+        <div class="col-lg-6">
+        </div>
+    </div>
+    <div class="form-group col-lg-12" style="display:inline-block">
+        <div class="col-lg-6">
+            <label><b>點選期數：</b></label>
+            <input class="btn btn-warning" name="PeriodNum" type="submit" id="selectnum" value=30 />
+            <input class="btn btn-warning" name="PeriodNum" type="submit" id="selectnum" value=60 />
+            <input class="btn btn-warning" name="PeriodNum" type="submit" id="selectnum" value=90 />
+        </div>
+        <div class="col-lg-6">
+        </div>
+    </div>
+
+        }
+
+<!------------------------------------------------------------------------------------->
+        <div class="col-lg-12" style="display:inline-block">
+            
+            <div class="col-lg-3">
+                <table class="table table-hover" style="width:100%">
+                    <thead style="background-color:#BBFFEE">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First</th>
+                            <th scope="col">second</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       @if (Model != null)
+                       {
+                        for (int i = 0; i < 10; i++)
+                        {
+                            <tr id="num_@(i + 1)">
+                                <th scope="row">@(i + 1)</th>
+                                <td>@Model.selectNumberCountListOrderBy.ElementAt(i).Key</td>
+                                <td>@Model.selectNumberCountListOrderBy.ElementAt(i).Value</td>
+                            </tr>
+                        }
+                       }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-lg-3">
+                <table class="table table-hover" style="width:100%">
+                    <thead style="background-color:#BBFFEE">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First</th>
+                            <th scope="col">second</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null)
+                        {
+                            for (int i = 10; i < 20; i++)
+                            {
+                                <tr id="num_@(i + 1)">
+                                    <th scope="row">@(i + 1)</th>
+                                    <td>@Model.selectNumberCountListOrderBy.ElementAt(i).Key</td>
+                                    <td>@Model.selectNumberCountListOrderBy.ElementAt(i).Value</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-lg-3">
+                <table class="table table-hover" style="width:100%">
+                    <thead style="background-color:#BBFFEE">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First</th>
+                            <th scope="col">second</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null)
+                        {
+                            for (int i = 20; i < 30; i++)
+                            {
+                                <tr id="num_@(i + 1)">
+                                    <th scope="row">@(i + 1)</th>
+                                    <td>@Model.selectNumberCountListOrderBy.ElementAt(i).Key</td>
+                                    <td>@Model.selectNumberCountListOrderBy.ElementAt(i).Value</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-lg-3">
+                <table class="table table-hover" style="width:100%">
+                    <thead style="background-color:#BBFFEE">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First</th>
+                            <th scope="col">second</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null)
+                        {
+                            for (int i = 30; i < 39; i++)
+                            {
+                                <tr id="num_@(i + 1)">
+                                    <th scope="row">@(i + 1)</th>
+                                    <td>@Model.selectNumberCountListOrderBy.ElementAt(i).Key</td>
+                                    <td>@Model.selectNumberCountListOrderBy.ElementAt(i).Value</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        @section scripts{
+            <script>
+                $("tr[id^='num_']").each(function (data) {
+                    if (data < 10) {
+                        $(this).children('td').css("color", "red");
+                        $(this).children('td').css("font-weight", "bold");
+                    }
+                }
+                )
+            </script>
+
+        }

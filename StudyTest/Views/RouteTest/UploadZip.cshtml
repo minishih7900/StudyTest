@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "UploadZip";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>UploadZip</h2>
+<hr />
+    <div class="col-lg-12">
+    @using (Html.BeginForm("Upload", "RouteTest", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-sm-1">選擇檔案</label>
+                <span class="col-sm-10">
+                    <span class="btn btn-info" id="FileBnt">
+                        <i class="fa fa-plus"></i> <span>選擇檔案</span>
+                    </span>
+                    <input type="file" id="file" style="display:none;">
+                    <span class="btn btn-default col-sm-7" >
+                        <label id="FileName"></label>
+                    </span>
+                    <span class="btn btn-info" id="FileSub">
+                        <i class="fa fa-plus"></i> <span>送出</span>
+                    </span>
+                    @*<input type="file" id="file">*@
+                </span>
+                @*<div class="col-sm-6">
+                    <input type="submit" value="提交" class="btn btn-primary" />
+                </div>*@
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-1">解壓縮檔</label>
+                <div class="col-sm-10">
+                    <a class="btn btn-info " onclick="DowLoadFile()" id="btnDowLoadFile">
+                        <i class="fa fa-download"></i> <span>DowLoad</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>  
+@section scripts{
+    <script>
+            function DowLoadFile() {
+                window.location.href = '@Url.Content("~/RouteTest/unzip")';
+            }
+        $(function () {
+            $('#FileBnt').click(function () {
+                $('#file').click();
+            });
+            $('#file').change(function (e) {
+                var files = $(this)[0].files;
+                if (files.length > 0) {
+                    $('#FileName').html(files[0].name);
+                } else {
+                    $('#FileName').html('');
+                }
+            });
+            $('#FileSub').click(function () {
+                $('form').submit();
+            });
+        })
+    </script>
+}

@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "About";
+}
+
+<h2>About</h2>
+@ViewBag.Message<br />
+<div  >
+    <table class="table table-bordered" style="width:30%">
+        <tr class="success">
+            <th class="col-lg-3"><label>excel下載練習</label></th>
+            <th class="col-lg-3"><label>Word下載練習</label></th>
+            <th class="col-lg-3"><label>Lot</label></th>
+        </tr>
+        <tr>
+            <td>
+                <a href="@Url.Action("Aboutbutton", "Home")" class="btn btn-warning btn-table"><span>Export</span></a>
+            </td>
+            <td>
+                <a href="@Url.Action("AboutWord", "Home")" class="btn btn-warning btn-table"><span>Export</span></a>
+            </td>
+            <td>
+                <a href="@Url.Action("Index", "Lottery")" class="btn btn-warning btn-table"><span>進入</span></a>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+
+
+
