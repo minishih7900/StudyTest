@@ -1,6 +1,7 @@
-﻿@model  Study.Models.Models.SelectLotNumber
+﻿@model  Study.Models.Models.SelectLotNumber6
 @{
-    ViewBag.Title = "熱門牌";
+    ViewBag.Title = "最合數字";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @section css{
@@ -16,7 +17,8 @@
     </style>
 }
 
-<h2>熱門牌</h2>
+<h2>最合數字</h2>
+<!--第1個表格-->
 <div class="container row">
     <div class="FunctionKey">
         @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-primary" })
@@ -24,7 +26,7 @@
     </div>
     <hr />
     <div class="QueryConditions">
-        @using (Html.BeginForm("HotNumber", "Lottery", FormMethod.Post, new { @role = "form", @class = "" }))
+        @using (Html.BeginForm("QuerySelectNumber6Count", "HkLot49", FormMethod.Post, new { @role = "form", @class = "" }))
         {
             <div class="form-group col-lg-6">
                 <div class="col-lg-6">
@@ -50,25 +52,46 @@
                 <div class="col-lg-6">
                 </div>
             </div>
-            <div class="form-group col-lg-12" style="display:inline-block">
-                <div class="col-lg-6">
-                    <label><b>點選期數：</b></label>
-                    <input class="btn btn-warning" name="PeriodNum" type="submit" id="selectnum" value=10 />
-                    <input class="btn btn-warning" name="PeriodNum" type="submit" id="selectnum" value=30 />
-                    <input class="btn btn-warning" name="PeriodNum" type="submit" id="selectnum" value=60 />
-                    <input class="btn btn-warning" name="PeriodNum" type="submit" id="selectnum" value=90 />
-                    <input class="btn btn-warning" name="PeriodNum" type="submit" id="selectnum" value=All />
-                </div>
-                <div class="col-lg-6">
-                </div>
-            </div>
+            <table class="table table-striped table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                    </tr>
+                </thead>
 
+                <tbody>
+
+                    @for (int j = 0; j < 10; j++)
+                    {
+                        <tr>
+                            @for (int i = 0; i < 5; i++)
+                            {
+                                <th scope="row">
+                                    <input class="btn btn-warning" name="selectnum" type="submit" id="selectnum" value=@i@j />
+                                </th>
+                                string dd = @Convert.ToString(i) + Convert.ToString(j);
+                                <td>@Model.selectNumber6CountDarry[int.Parse(dd)]</td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
         }
     </div>
-    <!------------------------------------------------------------------------------------->
-    <div class="col-md-12" style="display:inline-block">
+    <!--第2個表格-->
+    <div class="col-lg-12">
 
-        <div class="col-md-3">
+        <div class="col-md-2">
             <table class="table table-hover" style="width:100%">
                 <thead style="background-color:#BBFFEE">
                     <tr>
@@ -78,14 +101,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if (Model != null)
+                    @if (Model.selectNumber6CountListOrderBy.Count != 0)
                     {
                         for (int i = 0; i < 10; i++)
                         {
                             <tr id="num_@(i + 1)">
                                 <th scope="row">@(i + 1)</th>
-                                <td>@Model.selectNumberCountListOrderBy.ElementAt(i).Key</td>
-                                <td>@Model.selectNumberCountListOrderBy.ElementAt(i).Value</td>
+                                <td>@Model.selectNumber6CountListOrderBy.ElementAt(i).Key</td>
+                                <td>@Model.selectNumber6CountListOrderBy.ElementAt(i).Value</td>
                             </tr>
                         }
                     }
@@ -93,7 +116,7 @@
             </table>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-2">
             <table class="table table-hover" style="width:100%">
                 <thead style="background-color:#BBFFEE">
                     <tr>
@@ -103,14 +126,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if (Model != null)
+                    @if (Model.selectNumber6CountListOrderBy.Count != 0)
                     {
                         for (int i = 10; i < 20; i++)
                         {
                             <tr id="num_@(i + 1)">
                                 <th scope="row">@(i + 1)</th>
-                                <td>@Model.selectNumberCountListOrderBy.ElementAt(i).Key</td>
-                                <td>@Model.selectNumberCountListOrderBy.ElementAt(i).Value</td>
+                                <td>@Model.selectNumber6CountListOrderBy.ElementAt(i).Key</td>
+                                <td>@Model.selectNumber6CountListOrderBy.ElementAt(i).Value</td>
                             </tr>
                         }
                     }
@@ -118,7 +141,7 @@
             </table>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-2">
             <table class="table table-hover" style="width:100%">
                 <thead style="background-color:#BBFFEE">
                     <tr>
@@ -128,14 +151,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if (Model != null)
+                    @if (Model.selectNumber6CountListOrderBy.Count != 0)
                     {
                         for (int i = 20; i < 30; i++)
                         {
                             <tr id="num_@(i + 1)">
                                 <th scope="row">@(i + 1)</th>
-                                <td>@Model.selectNumberCountListOrderBy.ElementAt(i).Key</td>
-                                <td>@Model.selectNumberCountListOrderBy.ElementAt(i).Value</td>
+                                <td>@Model.selectNumber6CountListOrderBy.ElementAt(i).Key</td>
+                                <td>@Model.selectNumber6CountListOrderBy.ElementAt(i).Value</td>
                             </tr>
                         }
                     }
@@ -143,7 +166,7 @@
             </table>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-2">
             <table class="table table-hover" style="width:100%">
                 <thead style="background-color:#BBFFEE">
                     <tr>
@@ -153,14 +176,39 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if (Model != null)
+                    @if (Model.selectNumber6CountListOrderBy.Count != 0)
                     {
-                        for (int i = 30; i < 39; i++)
+                        for (int i = 30; i < 40; i++)
                         {
                             <tr id="num_@(i + 1)">
                                 <th scope="row">@(i + 1)</th>
-                                <td>@Model.selectNumberCountListOrderBy.ElementAt(i).Key</td>
-                                <td>@Model.selectNumberCountListOrderBy.ElementAt(i).Value</td>
+                                <td>@Model.selectNumber6CountListOrderBy.ElementAt(i).Key</td>
+                                <td>@Model.selectNumber6CountListOrderBy.ElementAt(i).Value</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-md-2">
+            <table class="table table-hover" style="width:100%">
+                <thead style="background-color:#BBFFEE">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">second</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.selectNumber6CountListOrderBy.Count != 0)
+                    {
+                        for (int i = 40; i < 49; i++)
+                        {
+                            <tr id="num_@(i + 1)">
+                                <th scope="row">@(i + 1)</th>
+                                <td>@Model.selectNumber6CountListOrderBy.ElementAt(i).Key</td>
+                                <td>@Model.selectNumber6CountListOrderBy.ElementAt(i).Value</td>
                             </tr>
                         }
                     }
@@ -168,19 +216,18 @@
             </table>
         </div>
     </div>
+
 </div>
 
-
-
-        @section scripts{
-            <script>
-                $("tr[id^='num_']").each(function (data) {
-                    if (data < 10) {
-                        $(this).children('td').css("color", "red");
-                        $(this).children('td').css("font-weight", "bold");
-                    }
-                }
-                )
-            </script>
-
+@section scripts{
+    <script>
+        $("tr[id^='num_']").each(function (data) {
+            if (data < 10) {
+                $(this).children('td').css("color", "red");
+                $(this).children('td').css("font-weight", "bold");
+            }
         }
+      )
+    </script>
+}
+
