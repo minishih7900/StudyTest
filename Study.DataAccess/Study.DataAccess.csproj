@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Study.DataAccess</RootNamespace>
     <AssemblyName>Study.DataAccess</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -47,10 +47,6 @@
     <Compile Include="SqlRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
-      <Project>{d0d912d2-fcec-4955-ab6b-d7523dd95835}</Project>
-      <Name>DataAccess</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Study.Models\Study.Models.csproj">
       <Project>{d0ee0507-7719-417d-aaed-1c289a933ac0}</Project>
       <Name>Study.Models</Name>

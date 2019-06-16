@@ -43,20 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountServices.cs" />
-    <Compile Include="HkLot49Services.cs" />
     <Compile Include="HomeServices.cs" />
     <Compile Include="LotteryServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Study.DataAccess\Study.DataAccess.csproj">
-      <Project>{4c616c51-037d-4b26-81c2-f57a4e7b8e3d}</Project>
-      <Name>Study.DataAccess</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Study.Models\Study.Models.csproj">
-      <Project>{d0ee0507-7719-417d-aaed-1c289a933ac0}</Project>
-      <Name>Study.Models</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -7,8 +7,6 @@ using Study.Services;
 using Study.Models.Models;
 using Study.DataAccess;
 
-
-
 namespace StudyTEST.Controllers
 {
     public class AccountController : Controller

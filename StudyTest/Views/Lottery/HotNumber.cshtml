@@ -1,6 +1,6 @@
 ﻿@model  Study.Models.Models.SelectLotNumber
 @{
-    ViewBag.Title = "熱門牌";
+    ViewBag.Title = "HotNumber";
 }
 
 @section css{
@@ -16,7 +16,7 @@
     </style>
 }
 
-<h2>熱門牌</h2>
+<h2>HotNumber</h2>
 <div class="container row">
     <div class="FunctionKey">
         @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-primary" })
@@ -53,11 +53,9 @@
             <div class="form-group col-lg-12" style="display:inline-block">
                 <div class="col-lg-6">
                     <label><b>點選期數：</b></label>
-                    <input class="btn btn-warning" name="PeriodNum" type="submit" id="selectnum" value=10 />
                     <input class="btn btn-warning" name="PeriodNum" type="submit" id="selectnum" value=30 />
                     <input class="btn btn-warning" name="PeriodNum" type="submit" id="selectnum" value=60 />
                     <input class="btn btn-warning" name="PeriodNum" type="submit" id="selectnum" value=90 />
-                    <input class="btn btn-warning" name="PeriodNum" type="submit" id="selectnum" value=All />
                 </div>
                 <div class="col-lg-6">
                 </div>

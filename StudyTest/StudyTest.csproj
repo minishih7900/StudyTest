@@ -79,9 +79,11 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
@@ -212,7 +214,6 @@
     <Content Include="Content\bootstrap-datepicker\css\bootstrap-datepicker.standalone.css.map" />
     <Content Include="Content\bootstrap-datepicker\css\bootstrap-datepicker3.css.map" />
     <Content Include="Content\bootstrap-datepicker\css\bootstrap-datepicker3.standalone.css.map" />
-    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="scripts\jquery-3.3.1.js" />
     <Content Include="scripts\jquery-3.3.1.min.js" />
@@ -234,7 +235,6 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\HkLot49Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LotteryController.cs" />
     <Compile Include="Controllers\RouteTestController.cs" />
@@ -278,11 +278,6 @@
     <Content Include="Views\Lottery\AddNumber.cshtml" />
     <Content Include="Views\Home\DatepicerTest.cshtml" />
     <Content Include="Views\Home\DatepicerTest2.cshtml" />
-    <Content Include="Views\HkLot49\Index.cshtml" />
-    <Content Include="Views\HkLot49\QueryNumber6.cshtml" />
-    <Content Include="Views\HkLot49\AddNumber6.cshtml" />
-    <Content Include="Views\HkLot49\HotNumber6.cshtml" />
-    <Content Include="Views\HkLot49\QuerySelectNumber6Count.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -293,28 +288,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
-      <Project>{d0d912d2-fcec-4955-ab6b-d7523dd95835}</Project>
-      <Name>DataAccess</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ExcelTools\ExcelTools.csproj">
-      <Project>{0c6931f0-164b-41df-8e4b-2ca2683301af}</Project>
-      <Name>ExcelTools</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Study.DataAccess\Study.DataAccess.csproj">
-      <Project>{4c616c51-037d-4b26-81c2-f57a4e7b8e3d}</Project>
-      <Name>Study.DataAccess</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Study.Models\Study.Models.csproj">
-      <Project>{d0ee0507-7719-417d-aaed-1c289a933ac0}</Project>
-      <Name>Study.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Study.Services\Study.Services.csproj">
-      <Project>{37dced70-5607-46f6-b31b-67f45e5cae9c}</Project>
-      <Name>Study.Services</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
