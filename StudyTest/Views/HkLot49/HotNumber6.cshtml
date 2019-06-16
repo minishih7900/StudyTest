@@ -1,6 +1,7 @@
-﻿@model  Study.Models.Models.SelectLotNumber
+﻿@model  Study.Models.Models.SelectLotNumber6
 @{
     ViewBag.Title = "熱門牌";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @section css{
@@ -24,7 +25,7 @@
     </div>
     <hr />
     <div class="QueryConditions">
-        @using (Html.BeginForm("HotNumber", "Lottery", FormMethod.Post, new { @role = "form", @class = "" }))
+        @using (Html.BeginForm("HotNumber6", "HkLot49", FormMethod.Post, new { @role = "form", @class = "" }))
         {
             <div class="form-group col-lg-6">
                 <div class="col-lg-6">
@@ -57,7 +58,6 @@
                     <input class="btn btn-warning" name="PeriodNum" type="submit" id="selectnum" value=30 />
                     <input class="btn btn-warning" name="PeriodNum" type="submit" id="selectnum" value=60 />
                     <input class="btn btn-warning" name="PeriodNum" type="submit" id="selectnum" value=90 />
-                    <input class="btn btn-warning" name="PeriodNum" type="submit" id="selectnum" value=All />
                 </div>
                 <div class="col-lg-6">
                 </div>
@@ -68,7 +68,7 @@
     <!------------------------------------------------------------------------------------->
     <div class="col-md-12" style="display:inline-block">
 
-        <div class="col-md-3">
+        <div class="col-md-2">
             <table class="table table-hover" style="width:100%">
                 <thead style="background-color:#BBFFEE">
                     <tr>
@@ -84,8 +84,8 @@
                         {
                             <tr id="num_@(i + 1)">
                                 <th scope="row">@(i + 1)</th>
-                                <td>@Model.selectNumberCountListOrderBy.ElementAt(i).Key</td>
-                                <td>@Model.selectNumberCountListOrderBy.ElementAt(i).Value</td>
+                                <td>@Model.selectNumber6CountListOrderBy.ElementAt(i).Key</td>
+                                <td>@Model.selectNumber6CountListOrderBy.ElementAt(i).Value</td>
                             </tr>
                         }
                     }
@@ -93,7 +93,7 @@
             </table>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-2">
             <table class="table table-hover" style="width:100%">
                 <thead style="background-color:#BBFFEE">
                     <tr>
@@ -109,8 +109,8 @@
                         {
                             <tr id="num_@(i + 1)">
                                 <th scope="row">@(i + 1)</th>
-                                <td>@Model.selectNumberCountListOrderBy.ElementAt(i).Key</td>
-                                <td>@Model.selectNumberCountListOrderBy.ElementAt(i).Value</td>
+                                <td>@Model.selectNumber6CountListOrderBy.ElementAt(i).Key</td>
+                                <td>@Model.selectNumber6CountListOrderBy.ElementAt(i).Value</td>
                             </tr>
                         }
                     }
@@ -118,7 +118,7 @@
             </table>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-2">
             <table class="table table-hover" style="width:100%">
                 <thead style="background-color:#BBFFEE">
                     <tr>
@@ -134,8 +134,8 @@
                         {
                             <tr id="num_@(i + 1)">
                                 <th scope="row">@(i + 1)</th>
-                                <td>@Model.selectNumberCountListOrderBy.ElementAt(i).Key</td>
-                                <td>@Model.selectNumberCountListOrderBy.ElementAt(i).Value</td>
+                                <td>@Model.selectNumber6CountListOrderBy.ElementAt(i).Key</td>
+                                <td>@Model.selectNumber6CountListOrderBy.ElementAt(i).Value</td>
                             </tr>
                         }
                     }
@@ -143,7 +143,7 @@
             </table>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-2">
             <table class="table table-hover" style="width:100%">
                 <thead style="background-color:#BBFFEE">
                     <tr>
@@ -155,25 +155,51 @@
                 <tbody>
                     @if (Model != null)
                     {
-                        for (int i = 30; i < 39; i++)
+                        for (int i = 30; i < 40; i++)
                         {
                             <tr id="num_@(i + 1)">
                                 <th scope="row">@(i + 1)</th>
-                                <td>@Model.selectNumberCountListOrderBy.ElementAt(i).Key</td>
-                                <td>@Model.selectNumberCountListOrderBy.ElementAt(i).Value</td>
+                                <td>@Model.selectNumber6CountListOrderBy.ElementAt(i).Key</td>
+                                <td>@Model.selectNumber6CountListOrderBy.ElementAt(i).Value</td>
                             </tr>
                         }
                     }
                 </tbody>
             </table>
         </div>
+
+        <div class="col-md-2">
+            <table class="table table-hover" style="width:100%">
+                <thead style="background-color:#BBFFEE">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">second</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        for (int i = 40; i < 49; i++)
+                        {
+                            <tr id="num_@(i + 1)">
+                                <th scope="row">@(i + 1)</th>
+                                <td>@Model.selectNumber6CountListOrderBy.ElementAt(i).Key</td>
+                                <td>@Model.selectNumber6CountListOrderBy.ElementAt(i).Value</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+
     </div>
 </div>
 
 
 
-        @section scripts{
-            <script>
+@section scripts{
+    <script>
                 $("tr[id^='num_']").each(function (data) {
                     if (data < 10) {
                         $(this).children('td').css("color", "red");
@@ -181,6 +207,7 @@
                     }
                 }
                 )
-            </script>
+    </script>
 
-        }
+}
+

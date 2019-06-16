@@ -150,7 +150,12 @@
 
     $(function () {
         $('.pagination>li>a[href]').each(function (i, item) {
-            var page = $(item).attr('href').replace('/Lottery/QueryNumber?Page=', '');
+            //var page = $(item).attr('href').replace('/Lottery/QueryNumber?Page=', '');
+            //let params = new URL('https://example.com?foo=1&bar=2').searchParams;
+            //params.get('foo'); // "1"
+            //params.get('bar'); // "2"
+            
+            var page = $(item).html();
             $(item).attr('href', '#').click(function () { postPage(page); });
 
         });
