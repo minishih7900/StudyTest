@@ -44,7 +44,10 @@
             <label for="StartDate"><b>開始到結束期數</b></label>
             <input type="text" class="form-control" readonly value="@ViewBag.Data">
             <br />
+            @Html.CheckBoxFor(m => m.nowYear)
+            <label for="vehicle1">統計今年資料</label><br>
             @ViewBag.Message
+            <br />
         </div>
         <div class="col-lg-6">
         </div>

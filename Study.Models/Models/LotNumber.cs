@@ -30,6 +30,6 @@ namespace Study.Models.Models
         public int[] selectNumberCountDarry { get; set; }
         public Dictionary<int?, int?> selectNumberCountList { get; set; }
         public Dictionary<int?,int?> selectNumberCountListOrderBy { get; set; }
-
+        public bool nowYear { get; set; }
     }
 }

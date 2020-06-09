@@ -95,11 +95,17 @@ namespace StudyTEST.Controllers
             return View(model);
         }
         [HttpPost]
-        public ActionResult QuerySelectNumberCount(string selectnum, string StartDate, string EndDate, string StartPeriod, string EndPeriod)
+        public ActionResult QuerySelectNumberCount(string selectnum, string StartDate, string EndDate, string StartPeriod, string EndPeriod, bool nowYear)
         {
 
             SelectLotNumber model = new SelectLotNumber();
             List<LotNumber> numList = new List<LotNumber>();
+            if (string.IsNullOrEmpty(StartDate) && string.IsNullOrEmpty(EndDate) && nowYear)
+            {
+                StartDate = DateTime.Now.Year.ToString()+"0101";
+                EndDate = DateTime.Now.Year.ToString() + "1231";
+            }
+            model.nowYear = nowYear;
             numList = _lotteryService.GetNumberListServices(TrimStartZone(selectnum), StartDate, EndDate, StartPeriod, EndPeriod);
             SumNumberCount(model, numList);
             ViewBag.Message = "查詢期間為：" + numList.Select(d => d.開獎日期).Min() + "~" + numList.Select(d => d.開獎日期).Max();
