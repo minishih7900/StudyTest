@@ -434,5 +434,56 @@ namespace ExcelTools
             TaiwanCalendar taiwanCalendar = new TaiwanCalendar();
             return string.Format("{0:00}", taiwanCalendar.GetDayOfMonth(datetime));
         }
+
+
+        public string OutputWordTest()
+        {
+            string templateFilePath = Path.Combine(HostingEnvironment.MapPath("~/ExcelTemplate"), "test0001.docx");
+            DocX document = DocX.Load(templateFilePath);
+            var myImageFullPath = @"C:\temp\FHM0I715F010202-163404.jpg";
+            Image image = document.AddImage(myImageFullPath);
+
+            // Create a picture (A custom view of an Image).
+            Picture picture = image.CreatePicture();
+
+            Table t = document.Tables[0];
+            t.Rows[0].Cells[1].Paragraphs.First().Append("單據BB");
+            t.Rows[0].Cells[3].Paragraphs.First().Append("計時制");
+            t.Rows[1].Cells[1].Paragraphs.First().Append("停車單");
+            t.Rows[1].Cells[3].Paragraphs.First().Append("NM-0998");
+            t.Rows[2].Cells[1].Paragraphs.First().Append("自用小型車");
+            t.Rows[2].Cells[3].Paragraphs.First().Append("0.5");
+            t.Rows[3].Cells[1].Paragraphs.First().Append("未紀錄");
+            t.Rows[3].Cells[3].Paragraphs.First().Append("中和區安和路");
+            t.Rows[4].Cells[1].Paragraphs.First().Append("");
+            t.Rows[4].Cells[3].Paragraphs.First().Append("");
+            t.Rows[5].Cells[1].Paragraphs.First().Append("");
+            t.Rows[5].Cells[3].Paragraphs.First().Append("");
+            t.Rows[6].Cells[1].Paragraphs.First().Append("");
+            t.Rows[6].Cells[3].Paragraphs.First().Append("");
+            t.Rows[7].Cells[1].Paragraphs.First().Append("");
+            t.Rows[7].Cells[3].Paragraphs.First().Append("");
+
+            // Insert a new Paragraph into the document.
+            Paragraph p1 = document.InsertParagraph();
+            p1.AppendPicture(picture);
+
+            string filePath = @"C:\temp\word";
+
+            //建folder
+            if (!Directory.Exists(filePath))
+                Directory.CreateDirectory(filePath);
+
+            //新完整檔名
+            string newFileName = "word.docx";
+            //檔案路徑 + 新完整檔名
+            string fullFilePath = Path.Combine(filePath, newFileName);
+
+            FileStream file = new FileStream(fullFilePath, FileMode.Create);//產生檔案
+            document.SaveAs(file);
+            file.Close();
+            GC.Collect();
+            return fullFilePath;
+        }
     }
 }

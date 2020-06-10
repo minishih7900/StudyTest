@@ -84,11 +84,12 @@ namespace WebApplication1.Controllers
         }
         public ActionResult TestCode()
         {
+            var MR = new report();
             
-           
-           
-            
-            return RedirectToAction("Tool", "Home");
+            string downloadPath = MR.OutputWordTest();
+            byte[] fileBytes = System.IO.File.ReadAllBytes(downloadPath);
+            string fileName = Path.GetFileName(downloadPath);
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
         }
         [HttpPost]
         public string ranNumber(string inputNumer)
