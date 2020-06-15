@@ -436,7 +436,7 @@ namespace ExcelTools
         }
 
 
-        public string OutputWordTest()
+        public byte[] OutputWordTest()
         {
             string templateFilePath = Path.Combine(HostingEnvironment.MapPath("~/ExcelTemplate"), "test0001.docx");
             DocX document = DocX.Load(templateFilePath);
@@ -468,22 +468,59 @@ namespace ExcelTools
             Paragraph p1 = document.InsertParagraph();
             p1.AppendPicture(picture);
 
-            string filePath = @"C:\temp\word";
+            //string filePath = @"C:\temp\word";
 
-            //建folder
-            if (!Directory.Exists(filePath))
-                Directory.CreateDirectory(filePath);
+            ////建folder
+            //if (!Directory.Exists(filePath))
+            //    Directory.CreateDirectory(filePath);
 
-            //新完整檔名
-            string newFileName = "word.docx";
-            //檔案路徑 + 新完整檔名
-            string fullFilePath = Path.Combine(filePath, newFileName);
+            ////新完整檔名
+            //string newFileName = "word.docx";
+            ////檔案路徑 + 新完整檔名
+            //string fullFilePath = Path.Combine(filePath, newFileName);
 
-            FileStream file = new FileStream(fullFilePath, FileMode.Create);//產生檔案
-            document.SaveAs(file);
-            file.Close();
+            //FileStream file = new FileStream(fullFilePath, FileMode.Create);//產生檔案
+            //document.SaveAs(file);
+            //file.Close();
+            //GC.Collect();
+            //return fullFilePath;
+
+            MemoryStream stream = new MemoryStream();
+            document.SaveAs(stream);
+            byte[] fileBytes = stream.ToArray();
+            stream.Close();
+            stream.Dispose();
             GC.Collect();
-            return fullFilePath;
+            return fileBytes;
+
+            #region 使用url下載圖片
+            //string ImageServer = WebConfigurationManager.AppSettings["ImageServerSite"];
+            //string myImageFullPath = ImageServer + item.ParkMonth + "/" + item.ParkDate + "/" + item.FileName;
+            //System.Net.HttpWebRequest webRequest = (System.Net.HttpWebRequest)System.Net.HttpWebRequest.Create(myImageFullPath);
+            //webRequest.AllowWriteStreamBuffering = true;
+            //webRequest.Timeout = 30000;
+            //System.Net.WebResponse webResponse;
+            //try
+            //{
+            //    webResponse = webRequest.GetResponse();
+            //}
+            //catch (Exception ex)
+            //{
+            //    logger.Error($"單據明細docx檔下載發生例外:{item.FileName}{ex.Message}");
+            //    continue;
+            //}
+            //Stream stream = webResponse.GetResponseStream();
+            //System.Drawing.Image image2 = System.Drawing.Image.FromStream(stream);
+            //webResponse.Close();
+
+            //MemoryStream ms = new MemoryStream();
+            //image2.Save(ms, image2.RawFormat);
+            //Image image = document.AddImage(ms);
+
+            //Picture picture = image.CreatePicture(200, 200);
+            //p1.AppendPicture(picture);
+            #endregion
+
         }
     }
 }

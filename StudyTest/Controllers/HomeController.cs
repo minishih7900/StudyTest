@@ -85,11 +85,12 @@ namespace WebApplication1.Controllers
         public ActionResult TestCode()
         {
             var MR = new report();
-            
-            string downloadPath = MR.OutputWordTest();
-            byte[] fileBytes = System.IO.File.ReadAllBytes(downloadPath);
-            string fileName = Path.GetFileName(downloadPath);
-            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
+
+            //string downloadPath = MR.OutputWordTest();
+            //byte[] fileBytes = System.IO.File.ReadAllBytes(downloadPath);
+            //string fileName = Path.GetFileName(downloadPath);
+            //return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
+            return File(MR.OutputWordTest(), System.Net.Mime.MediaTypeNames.Application.Octet, "1234.docx");
         }
         [HttpPost]
         public string ranNumber(string inputNumer)
