@@ -282,6 +282,7 @@
     <Content Include="Views\HkLot49\AddNumber6.cshtml" />
     <Content Include="Views\HkLot49\HotNumber6.cshtml" />
     <Content Include="Views\HkLot49\QuerySelectNumber6Count.cshtml" />
+    <Content Include="Views\Home\TestCodeWeb.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
